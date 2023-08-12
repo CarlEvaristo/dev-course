@@ -1,0 +1,4 @@
+.inactive-link {
+    pointer-events:none;
+    color:gray;
+}
