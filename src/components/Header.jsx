@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import useScrollPosition from '../hooks/useScrollPosition';
@@ -6,10 +6,14 @@ import useScrollPosition from '../hooks/useScrollPosition';
 import "./header.css"
 
 export default function Header() {
+  const [menuOn, setMenuOn] = useState(false)
   const location = useLocation()
   const scrollY = useScrollPosition();
-
-  const headerScroll = scrollY > 0 ? "headerBg" : "headerBgTransparent";
+  const headerScroll = (scrollY > 0 || menuOn) ? "headerBg" : "headerBgTransparent";
+    
+  function toggleMenu() {
+      setMenuOn(prev => !prev)
+  }
 
   return (
     <header className={headerScroll}>
@@ -18,7 +22,7 @@ export default function Header() {
                 <i className="fa-solid fa-file-code fa-xl"></i>
                 <h3>codewithcarl</h3>
             </div>
-            <nav>
+            <nav className={`menu ${ menuOn ? "moveDown" : "moveUp" }`}>
                 <NavLink 
                 to="/"
                 className={`link ${location.pathname === "/" && "active-link"}`}
@@ -37,9 +41,16 @@ export default function Header() {
                     to="/login"
                     className={`link ${location.pathname === "/login" && "active-link-login"}`}
                 >
-                    Login
+                    <i class="fa-solid fa-user"></i> Login
                 </NavLink>
             </nav>
+
+            <div className='hamburgerMenu' onClick={toggleMenu}>
+                <div className={`hamburgerBar ${menuOn ? "topBar" : "topBarBack"}`}></div>
+                <div className={`hamburgerBar ${menuOn ? "middleBar" : "middleBarBack"}`}></div>
+                <div className={`hamburgerBar ${menuOn ? "bottomBar" : "bottomBarBack"}`}></div>
+            </div>
+
         </div>
     </header>
   )

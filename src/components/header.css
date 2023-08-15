@@ -1,4 +1,7 @@
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position:fixed;
     width: 100vw;
     height: 10vh;
@@ -22,7 +25,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: row;
 }
 .logo {
     display: flex;
@@ -31,11 +33,14 @@ header {
     justify-content: flex-start;
     gap: 10px;
 }
+
+/* ====== MENU ====== */
+
 .link {
     text-decoration: none;
     margin: 0 10px;
     padding: 0.2em 1em;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 400;
     cursor: pointer;
     color:#000;
@@ -66,4 +71,75 @@ header {
 }
 .inactive {
     pointer-events: none;
+}
+
+/* ====== MOBILE MENU ====== */
+
+.hamburgerMenu{
+    display:none;
+    cursor: pointer;
+    z-index: 1100;
+}
+.hamburgerBar{
+    width: 30px;
+    height:4px;
+    background-color:rgb(0, 0, 0);
+    margin:4px 0;
+    border-radius: 2px;
+}
+
+/* ====== MEDIA QUERIES ====== */
+
+@media (max-width: 700px) {
+    
+    .menu {
+        margin: 0 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: #fff;
+        border: solid #000 2px;     
+        border-radius: 3px;
+        box-shadow: 3px 3px 0px 0px #000;
+        padding: 4rem 1rem 1rem;
+    }
+    .link:last-child {
+        margin-right: 10px;
+    }
+    .hamburgerMenu {
+        display: block;
+    }
+    .moveDown{
+        top:0px;
+        transform:translateY(70px);
+        transition: transform 150ms;
+    }
+    .moveUp{
+        top:0px;
+        transform:translateY(-250px);
+        transition: transform 150ms;
+    }
+
+    /* ====== HAMBURGER ANIMATION ====== */
+
+    .topBar {
+        transform:translateY(4px) rotate(45deg) ;
+        transition: transform .2s ease-in-out;
+    }
+    .topBarBack, .bottomBarBack {
+        transform:translateY(0px) rotate(0deg) ;
+        transition: transform .2s ease-in-out;
+    }
+    .middleBarBack {
+        display: block;
+    }
+    .middleBar {
+        display: none;
+    }
+    .bottomBar {
+        transform:translateY(-4px) rotate(-45deg) ;
+        transition: transform .2s ease-in-out;
+    }
+    
 }
