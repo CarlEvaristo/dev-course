@@ -1,4 +1,69 @@
-.inactive-link {
+header {
+    position:fixed;
+    width: 100vw;
+    height: 10vh;
+    z-index: 1000;
+}
+.headerBgTransparent{
+    border-bottom: solid 2px transparent;
+    background-color: transparent;
+    transition: background .2s, border .2s;
+}
+.headerBg{
+    background-color: #fff;
+    border-bottom: solid 2px #000;
+    transition: background .2s, border .2s;
+}
+.header-container {
+    margin: 0 auto;
+    height:100%;
+    max-width: 1000px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.link {
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 0.2em 1em;
+    font-size: 1.2rem;
+    font-weight: 400;
+    cursor: pointer;
+    color:#000;
+    border-radius: 3px;
+    border: solid #ffffff00 2px;
+    transition: color .2s ease-in-out;
+}
+.link:hover {
+    color:#727272;
+    transition: color .2s ease-in-out;
+}
+
+.active-link {
     pointer-events:none;
-    color:gray;
+    border: solid #000 2px;     
+    box-shadow: 3px 3px 0px 0px black;
+    background-color: #B087FD;
+}
+.active-link-login {
+    pointer-events:none;
+    border: solid #000 2px;  
+    border-radius: 50px;   
+    box-shadow: 3px 3px 0px 0px black;
+    background-color: #FF704E;
+}
+.link:last-child {
+    margin-right: 0px;
+}
+.inactive {
+    pointer-events: none;
 }
