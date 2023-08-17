@@ -1,0 +1,49 @@
+.carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    width:100%;
+    position:relative;
+}
+.sideScroll {
+    display: flex;
+}
+.sideScroll:first-child {
+    margin-left:0;
+}
+.sideScroll:last-child {
+    margin-right:0;
+}
+.sideScrollBtn {
+    font-weight: 900;
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: #B087FD;
+    border: solid #000 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    box-shadow: 3px 3px 0px 0px #000;
+}
+
+.leftBtn {
+    left: 20px;
+}
+
+.sideScrollBtn:hover {
+    background-color: #a16eff;
+    border: solid #000 2.2px;
+    cursor: pointer;
+}
+
+.sideScrollBtn:active {
+    background-color: #a16eff;
+    border: solid #000 2.2px;
+    box-shadow: 2px 2px 0px 0px #000;
+    top: 50.5%;
+    right: 19px;
+}

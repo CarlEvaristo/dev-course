@@ -1,0 +1,36 @@
+.hamburgerMenu{
+    display:none;
+    cursor: pointer;
+}
+.hamburgerBar{
+    width: 30px;
+    height:4px;
+    background-color:rgb(0, 0, 0);
+    margin:4px 0;
+    border-radius: 2px;
+}
+
+@media (max-width: 700px) {
+    .hamburgerMenu {
+        display: block;
+    }
+    .topBar {
+        transform:translateY(4px) rotate(45deg) ;
+        transition: transform .2s ease-in-out;
+    }
+    .topBarBack, .bottomBarBack {
+        transform:translateY(0px) rotate(0deg) ;
+        transition: transform .2s ease-in-out;
+    }
+    .middleBarBack {
+        display: block;
+    }
+    .middleBar {
+        display: none;
+    }
+    .bottomBar {
+        transform:translateY(-4px) rotate(-45deg) ;
+        transition: transform .2s ease-in-out;
+    }
+
+}

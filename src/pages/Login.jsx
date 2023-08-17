@@ -5,6 +5,7 @@ export default function Login() {
   const boxStyle = {
     width: "40vw",
     zIndex: "0",
+    backgroundColor: "red",
   }
 
   return (

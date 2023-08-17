@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import useScrollPosition from '../hooks/useScrollPosition';
 
+import HamburgerButton from './HamburgerButton';
+import useScrollPosition from '../hooks/useScrollPosition';
 import "./header.css"
 
 export default function Header() {
@@ -10,7 +11,7 @@ export default function Header() {
   const location = useLocation()
   const scrollY = useScrollPosition();
   const headerScroll = (scrollY > 0 || menuOn) ? "headerBg" : "headerBgTransparent";
-    
+
   function toggleMenu() {
       setMenuOn(prev => !prev)
   }
@@ -23,21 +24,21 @@ export default function Header() {
                 <h3>codewithcarl</h3>
             </div>
             <nav className={`menu ${ menuOn ? "moveDown" : "moveUp" }`}>
-                <NavLink 
+                <NavLink
                 to="/"
                 className={`link ${location.pathname === "/" && "active-link"}`}
                 >
                     Home
                 </NavLink>
 
-                <NavLink 
+                <NavLink
                     to="/courses"
                     className={`link ${location.pathname === "/courses" && "active-link"}`}
                 >
                     Courses
                 </NavLink>
 
-                <NavLink 
+                <NavLink
                     to="/login"
                     className={`link ${location.pathname === "/login" && "active-link-login"}`}
                 >
@@ -45,11 +46,8 @@ export default function Header() {
                 </NavLink>
             </nav>
 
-            <div className='hamburgerMenu' onClick={toggleMenu}>
-                <div className={`hamburgerBar ${menuOn ? "topBar" : "topBarBack"}`}></div>
-                <div className={`hamburgerBar ${menuOn ? "middleBar" : "middleBarBack"}`}></div>
-                <div className={`hamburgerBar ${menuOn ? "bottomBar" : "bottomBarBack"}`}></div>
-            </div>
+            <HamburgerButton toggleMenu={toggleMenu} menuOn={menuOn} />
+
 
         </div>
     </header>
