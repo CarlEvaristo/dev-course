@@ -8,12 +8,6 @@
 .sideScroll {
     display: flex;
 }
-.sideScroll:first-child {
-    margin-left:0;
-}
-.sideScroll:last-child {
-    margin-right:0;
-}
 .sideScrollBtn {
     font-weight: 900;
     width: 40px;

@@ -9,11 +9,12 @@ export default function Carousel() {
     const containerWidth = 200
 
     const galleryContainer = {
-        backgroundColor: "red",
         margin: "1rem 0 1rem 1rem",
         width: `${containerWidth}px`,
         aspectRatio: "1",
     }
+
+    const firstContainer = {...galleryContainer, margin: "1rem 0"}
 
     React.useEffect(()=>{
         console.log(scrolledStep)
@@ -31,11 +32,10 @@ export default function Carousel() {
                 break;
         }
     }
-
     return (
         <section className="carousel">
             <div className="sideScroll" style={{marginLeft:`${(-1 * scrolledStep * containerWidth)}px`, transition: "margin-left .5s ease-in-out",}}>
-                <Box style={galleryContainer}>1</Box>
+                <Box style={firstContainer}>1</Box>
                 <Box style={galleryContainer}>2</Box>
                 <Box style={galleryContainer}>3</Box>
                 <Box style={galleryContainer}>4</Box>
