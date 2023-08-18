@@ -1,2 +1,6 @@
 section {
+    margin: 2rem 0;
+    display: flex;
+    overflow-x: hidden;
+    width:100%;
 }
