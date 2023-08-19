@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
-import HamburgerButton from './HamburgerButton';
-import useScrollPosition from '../hooks/useScrollPosition';
+import HamburgerButton from "./HamburgerButton"
+import useScrollPosition from '../../hooks/useScrollPosition';
 import "./header.css"
 
 export default function Header() {

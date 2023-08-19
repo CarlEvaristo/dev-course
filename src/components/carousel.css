@@ -6,6 +6,7 @@
     position:relative;
 }
 .fadeSide:before {
+    pointer-events: none;
     content: '';
     position: absolute;
     left: 0;
@@ -15,11 +16,13 @@
     box-shadow: 50px 0 25px -25px #f4f5f000 inset,-50px 0 25px -25px #F4F5F0 inset;
 }
 .fadeLeft:before {
+    pointer-events: none;
     box-shadow: 50px 0 25px -25px #F4F5F0 inset,-50px 0 25px -25px #F4F5F0 inset;
     transition: box-shadow .2s ease-in-out;
 }
 .sideScroll {
     display: flex;
+    gap:1rem;
 }
 .sideScrollBtn {
     font-weight: 900;

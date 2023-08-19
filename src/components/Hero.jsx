@@ -8,7 +8,8 @@ export default function Hero() {
     height: "fit-content",
     width:"120%",
     zIndex: "0",
-    backgroundColor: "yellow",
+    backgroundColor: "#FDCA01",
+    padding: "1rem",
   }
 
   return (

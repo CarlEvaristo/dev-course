@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-
 import courseData from "../data.json"
+import Ide from '../components/Editor/Ide'
 
 export default function Course() {
   const {id} = useParams()
@@ -12,6 +12,9 @@ export default function Course() {
     <div>
         <h1>{data.title}</h1>
         <p>{data.content}</p>
+        <section>
+          <Ide />
+        </section>
     </div>
   )
 }

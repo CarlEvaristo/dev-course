@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Courses from "./pages/Courses";
 import Course from "./pages/Course";
 import Login from "./pages/Login";
-import Header from "./components/Header";
+import Header from "./components/Header/Header"
 
 import './App.css';
 
