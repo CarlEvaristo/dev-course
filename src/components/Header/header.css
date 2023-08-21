@@ -3,6 +3,7 @@ header {
     justify-content: space-between;
     align-items: center;
     position:fixed;
+    overflow-y: scroll;
     width: 100vw;
     height: 10vh;
     z-index: 1000;
@@ -88,9 +89,6 @@ header {
         border-radius: 3px;
         box-shadow: 3px 3px 0px 0px #000;
         padding: 4rem 1rem 1rem;
-    }
-    .link:last-child {
-        margin-right: 10px;
     }
     .moveDown{
         top:0px;

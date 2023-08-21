@@ -1,7 +1,8 @@
 import React from 'react'
 import CodeMirror from '@uiw/react-codemirror';
 import { langs } from '@uiw/codemirror-extensions-langs';
-import { nord } from '@uiw/codemirror-theme-nord';
+import { bbedit } from '@uiw/codemirror-theme-bbedit';
+import { abcdef } from '@uiw/codemirror-themes-all';
 import Box from '../Box';
 
 import "./editor.css"
@@ -12,41 +13,42 @@ import "./editor.css"
 // npm i @uiw/codemirror-themes-all
 // npm i @codemirror/lang-javascript
 
-export default function Editor({ lang }) {
-    const [isExpanded, setIsExpanded] = React.useState(true)
+export default function Editor({ lang, isExpanded, setIsExpanded, setSrcDoc, isDark }) {
+    const [code, setCode] = React.useState("");
 
-    const languages = {
-        "html": [langs.html()],
-        "css": [langs.css()],
-        "javascript": [langs.javascript()],
-    }
-
-    let boxStyle = {
-        padding: "0",
-        width: isExpanded ? "100%" : "40%",
-    }
+    React.useEffect(()=>{
+        setSrcDoc(prev => ({...prev, [lang]: code}))
+    },[code, setSrcDoc, lang])
 
     function clickHandler() {
-        setIsExpanded(prev => !prev)
+        setIsExpanded(lang)
     }
 
     return (
-        <Box style={boxStyle}>
+        <div className={`editorBox ${(isExpanded === lang) ? "expand" : "collapse"}`} onClick={clickHandler}>
             <div className="editor-header">
-                <h2>{lang}</h2><i class="fa-solid fa-down-left-and-up-right-to-center" onClick={clickHandler}></i>
+                <h4>{(isExpanded !== lang && lang.length > 4) ? lang.slice(0,4)+".." : lang}</h4><i className="fa-solid fa-down-left-and-up-right-to-center expandIcon"></i>
             </div>
             <CodeMirror
-                value=""
+                value={code}
+                onChange={setCode}
+                width="100%"
                 height="200px"
-                extensions={languages[lang]}
+                extensions={
+                    (lang === "html") ? [langs.html()] : 
+                    (lang === "css") ? [langs.css()] : 
+                    [langs.javascript()]
+                }
                 basicSetup={{
                     foldGutter: false,
                     dropCursor: false,
                     allowMultipleSelections: false,
                     indentOnInput: false,
+                    autocompletion: true,
                 }}
+                theme = {(isDark) ? abcdef : bbedit}
             />
-        </Box>
+        </div>
         
     )
 }

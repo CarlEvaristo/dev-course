@@ -41,7 +41,7 @@ export default function Header() {
                     to="/login"
                     className={`link ${location.pathname === "/login" && "active-link-login"}`}
                 >
-                    <i class="fa-solid fa-user"></i> Login
+                    <i className="fa-solid fa-user"></i> Login
                 </NavLink>
             </nav>
 
