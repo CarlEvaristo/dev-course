@@ -5,11 +5,11 @@ import Box from './Box'
 import Popup from './Popup';
 
 import "./carousel.css"
-import courseData from "../data.json"
+import { courses } from "../data"
 
 export default function Carousel() {
     const [scrolledStep, setScrolledStep] = React.useState(0);
-    const numItems = courseData.courses.length
+    const numItems = courses.length
     const visibleItems = 3
     const containerWidth = 250
 
@@ -46,7 +46,7 @@ export default function Carousel() {
             }
             <section className={`carousel fadeSide ${(scrolledStep > 0) && "fadeLeft"}`} >
                     <div className="sideScroll" style={{marginLeft:`${(-1 * scrolledStep * containerWidth)}px`, transition: "margin-left .5s ease-in-out",}}>
-                        {courseData.courses.map(item => {
+                        {courses.map(item => {
                             return (["0001", "0002", "0003"].includes(item.id)) ?
                                 <NavLink to={`/courses/${item.id}`}>
                                     <Box style={activeCourse}>

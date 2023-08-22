@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import CodeMirror from '@uiw/react-codemirror';
 import { langs } from '@uiw/codemirror-extensions-langs';
 import { bbedit } from '@uiw/codemirror-theme-bbedit';
@@ -10,7 +10,7 @@ import "./editor.css"
 export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrcDoc, isDark }) {
     const [consoleMsgs, setConsoleMsgs] = React.useState([])
     const console = useConsole(srcDoc.javascript, setConsoleMsgs)
-
+    const rootRef = useRef();
     const [code, setCode] = React.useState(srcDoc[lang])
 
     React.useEffect(()=>{
@@ -39,7 +39,7 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
                 <h4>{(isExpanded !== lang && lang.length > 4) ? lang.slice(0,4)+".." : lang}</h4>
                 <i className="fa-solid fa-down-left-and-up-right-to-center expandIcon"></i>
             </div>
-            <div style={{position:"relative"}}>
+            <div style={{position:"relative"}} useRef={rootRef}>
                 <CodeMirror
                     value={code}
                     onChange={setCode}
@@ -59,11 +59,11 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
                     }}
                     theme = {(isDark) ? abcdef : bbedit}
                 />
-                {(lang === "javascript") && 
+                {(lang === "javascript" && isExpanded === lang) && 
                     <div style={{position:"absolute", bottom:"0", width:"100%", color: isDark ? "white" : "black"}}>
                         <div className="consoleHeader">
                             <h4>Console</h4>
-                            {(isExpanded === lang) && <button className='consoleBtn' onClick={clickHandler}>RUN</button>}
+                            <button className='consoleBtn' onClick={clickHandler}>RUN</button>
                         </div>
                         <ul style={{height:"80px", padding:"0 .5em", overflowY:"scroll", fontFamily: "monospace",}}>
                             {consoleMsgs.map(item => <li style={{paddingLeft:"1rem"}}>{`> ${item}`}</li>)}

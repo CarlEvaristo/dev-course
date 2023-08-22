@@ -48,8 +48,7 @@
 }
 .consoleBtn:active {
     background-color: rgb(117, 236, 196);
-    border: solid #000 2.2px;
-    box-shadow: 2px 2px 0px 0px #000;
+    transform: scale(90%);
 }
 .consoleBtn:hover {
     background-color: rgb(177, 255, 229);

@@ -1,6 +1,8 @@
 .hamburgerMenu{
     display:none;
     cursor: pointer;
+    z-index: 2000;
+    padding:0 10px 0 0;
 }
 .hamburgerBar{
     width: 30px;

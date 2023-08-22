@@ -3,7 +3,6 @@ header {
     justify-content: space-between;
     align-items: center;
     position:fixed;
-    overflow-y: scroll;
     width: 100vw;
     height: 10vh;
     z-index: 1000;
@@ -77,9 +76,13 @@ header {
 /* ====== MEDIA QUERIES ====== */
 
 @media (max-width: 700px) {
-
+    .header-container {
+        position: relative;
+    }
     .menu {
-        margin: 0 0 0 auto;
+        position:absolute;
+        top:-80px;
+        right:0px;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -91,12 +94,10 @@ header {
         padding: 4rem 1rem 1rem;
     }
     .moveDown{
-        top:0px;
         transform:translateY(70px);
         transition: transform 150ms;
     }
     .moveUp{
-        top:0px;
         transform:translateY(-250px);
         transition: transform 150ms;
     }

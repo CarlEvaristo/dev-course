@@ -5,22 +5,21 @@ import Box from '../Box';
 
 import "./ide.css"
 
-export default function Ide() {
+export default function Ide({ htmlinput, css, javascript }) {
   const [isDark, setIsDark] = React.useState(true)
   const [isExpanded, setIsExpanded] = React.useState("html");  // 1,"html", "css", or "javascript"
   
   const [srcDoc, setSrcDoc] = React.useState({
-    html:`<h1>Hello World!</h1>
-    <h2>Let's code!</h2>`,
-    css:`body {font-family:arial;}h1{color: #FDCA01;}`,
-    javascript:`console.log("Hello world!")`,
+    html: htmlinput,
+    css:css,
+    javascript: javascript,
   })
 
   const sourceBrowser = `
     <html>
-      <body>${srcDoc.html}</body>
+      <body>${srcDoc.html}<script>${srcDoc.javascript}</script></body>
       <style>${srcDoc.css}</style>
-      <script>${srcDoc.javascript}</script>
+      
     </html>
   `
 
