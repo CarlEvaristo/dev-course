@@ -24,6 +24,7 @@ export default function Header() {
             </div>
             <nav className={`menu ${ menuOn ? "moveDown" : "moveUp" }`}>
                 <NavLink
+                onClick={() => setMenuOn(false)}
                 to="/"
                 className={`link ${location.pathname === "/" && "active-link"}`}
                 >
@@ -31,6 +32,7 @@ export default function Header() {
                 </NavLink>
 
                 <NavLink
+                    onClick={() => setMenuOn(false)}
                     to="/courses"
                     className={`link ${location.pathname === "/courses" && "active-link"}`}
                 >
@@ -38,6 +40,7 @@ export default function Header() {
                 </NavLink>
 
                 <NavLink
+                    onClick={() => setMenuOn(false)}
                     to="/login"
                     className={`link ${location.pathname === "/login" && "active-link-login"}`}
                 >
