@@ -31,6 +31,32 @@
     height:100%;
     width:15%;
 }
+.consoleHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+    background-color: rgb(227, 227, 227);
+    color:#000;
+}
+.consoleBtn {
+    border: solid #000 2px;
+    border-radius: 3px;
+    box-shadow: 3px 3px 0px 0px #000;
+    padding: .2em 2em;
+    background-color: aquamarine;
+}
+.consoleBtn:active {
+    background-color: rgb(117, 236, 196);
+    border: solid #000 2.2px;
+    box-shadow: 2px 2px 0px 0px #000;
+}
+.consoleBtn:hover {
+    background-color: rgb(177, 255, 229);
+    border: solid #000 2.2px;
+    cursor: pointer;
+}
+
 @media (max-width:1000px) {
     .editorBox {
         transition: none;
