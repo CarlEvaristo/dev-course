@@ -3995,6 +3995,11 @@
     "@lezer/highlight" "^1.0.0"
     "@lezer/lr" "^1.0.0"
 
+"codemirror@^5.18.2":
+  "integrity" "sha512-VSNugIBDGt0OU9gDjeVr6fNkoFQznrWEUdAApMlXQNbfE8gGO19776D6MwSqF/V/w/sDwonsQ0z7KmmI9guScg=="
+  "resolved" "https://registry.npmjs.org/codemirror/-/codemirror-5.65.14.tgz"
+  "version" "5.65.14"
+
 "codemirror@^6.0.0":
   "integrity" "sha512-J8j+nZ+CdWmIeFIGXEFbFPtpiYacFMDR8GlHK3IyHQJMCaVRfGx9NT+Hxivv1ckLWPvNdZqndbr/7lVhrf/Svg=="
   "resolved" "https://registry.npmjs.org/codemirror/-/codemirror-6.0.1.tgz"
