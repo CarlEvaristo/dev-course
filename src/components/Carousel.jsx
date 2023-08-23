@@ -47,13 +47,13 @@ export default function Carousel() {
             <section className={`carousel fadeSide ${(scrolledStep > 0) && "fadeLeft"}`} >
                     <div className="sideScroll" style={{marginLeft:`${(-1 * scrolledStep * containerWidth)}px`, transition: "margin-left .5s ease-in-out",}}>
                         {courses.map(item => {
-                            return (["0001", "0002", "0003"].includes(item.id)) ?
-                                <NavLink to={`/courses/${item.id}`}>
+                            return (!item.pro) ?
+                                <NavLink to={`/courses/${item.id}`} key={item.id}>
                                     <Box style={activeCourse}>
                                         <h2>{item.title}</h2>
                                     </Box>
                                 </NavLink>:
-                                <div onClick={popupHandler}> 
+                                <div onClick={popupHandler} key={item.id}> 
                                     <Box style={inactiveCourse}>
                                         <h2>{item.title}</h2>
                                     </Box>
@@ -61,10 +61,10 @@ export default function Carousel() {
                         })}
                     </div>
                     {((numItems - scrolledStep) > visibleItems) && <div className='sideScrollBtn' onClick={()=>handleClick("right")} >
-                        <i class="fa-solid fa-chevron-right"></i>
+                        <i className="fa-solid fa-chevron-right"></i>
                     </div>}
                     {(scrolledStep > 0) && <div className='sideScrollBtn leftBtn' onClick={()=>handleClick("left")} >
-                        <i class="fa-solid fa-chevron-left"></i>
+                        <i className="fa-solid fa-chevron-left"></i>
                     </div>}
 
             </section>

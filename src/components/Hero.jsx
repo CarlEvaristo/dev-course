@@ -9,7 +9,7 @@ export default function Hero() {
     width:"120%",
     zIndex: "0",
     backgroundColor: "#FDCA01",
-    padding: "1rem",
+    padding: "1rem 3rem",
   }
 
   return (

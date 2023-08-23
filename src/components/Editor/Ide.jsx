@@ -6,7 +6,7 @@ import Box from '../Box';
 import "./ide.css"
 
 export default function Ide({ htmlinput, css, javascript }) {
-  const [isDark, setIsDark] = React.useState(true)
+  const [isDark, setIsDark] = React.useState(false)
   const [isExpanded, setIsExpanded] = React.useState("html");  // 1,"html", "css", or "javascript"
   
   const [srcDoc, setSrcDoc] = React.useState({
@@ -26,26 +26,30 @@ export default function Ide({ htmlinput, css, javascript }) {
   let boxStyle = {
     margin:"0px",
     width: "100%",
-    height:"100%",
+    aspectRatio:"2",
   }
 
   return (
     <div className='ide'>
         <div className="ide-header">
-          <h3>Code Editor</h3>
           <i  className={`${isDark ? "fa-regular fa-sun" : "fa-solid fa-moon"} fa-lg theme-toggle`} 
               onClick={() => setIsDark(prev=>!prev)}>
           </i>
         </div>
         <div className="pane">
-          <Editor lang="html" isExpanded={isExpanded} setIsExpanded={setIsExpanded} srcDoc={srcDoc} setSrcDoc={setSrcDoc} isDark={isDark} />
-          <Editor lang="css" isExpanded={isExpanded} setIsExpanded={setIsExpanded} srcDoc={srcDoc} setSrcDoc={setSrcDoc} isDark={isDark} />
-          <Editor lang="javascript" isExpanded={isExpanded} setIsExpanded={setIsExpanded} srcDoc={srcDoc} setSrcDoc={setSrcDoc} isDark={isDark} />
+          <Editor lang="html" isExpanded={isExpanded} setIsExpanded={setIsExpanded} srcDoc={srcDoc} setSrcDoc={setSrcDoc} isDark={isDark} color="#B087FD" />
+          <Editor lang="css" isExpanded={isExpanded} setIsExpanded={setIsExpanded} srcDoc={srcDoc} setSrcDoc={setSrcDoc} isDark={isDark} color="#FDCA01" />
+          <Editor lang="javascript" isExpanded={isExpanded} setIsExpanded={setIsExpanded} srcDoc={srcDoc} setSrcDoc={setSrcDoc} isDark={isDark} color="#FF704E" />
         </div> 
         <div className="pane"> 
           <Box style={boxStyle}>
-            <div className="browser-header">
-              <h4>Browser</h4>
+            <div className="browser-header" style={{backgroundColor: "#F4F5F0"}}>
+              <h4>browser</h4>
+              <div className='browserBtns'>
+                <span class="dot" style={{backgroundColor: "#B087FD"}}></span>
+                <span class="dot" style={{backgroundColor: "#FDCA01"}}></span>
+                <span class="dot" style={{backgroundColor: "#FF704E"}}></span>
+              </div>
             </div>
             <iframe
               srcDoc={sourceBrowser}

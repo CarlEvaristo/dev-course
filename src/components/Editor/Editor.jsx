@@ -7,7 +7,7 @@ import useConsole from '../../hooks/useConsole';
 
 import "./editor.css"
 
-export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrcDoc, isDark }) {
+export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrcDoc, isDark, color }) {
     const [consoleMsgs, setConsoleMsgs] = React.useState([])
     const console = useConsole(srcDoc.javascript, setConsoleMsgs)
     const rootRef = useRef();
@@ -20,7 +20,7 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
     React.useEffect(()=>{
         setConsoleMsgs(prev => {
             return (console !== prev[0]) ? 
-                [console, ...prev] :
+                [...prev, console] :
                 [...prev]
         })
     },[srcDoc])
@@ -35,16 +35,16 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
 
     return (
         <div className={`editorBox ${(isExpanded === lang) ? "expand" : "collapse"}`} onClick={collapseHandler}>
-            <div className="editor-header">
-                <h4>{(isExpanded !== lang && lang.length > 4) ? lang.slice(0,4)+".." : lang}</h4>
+            <div className="editor-header" style={{backgroundColor: color}}>
+                <h4 style={{overflow:"hidden", marginRight:"20px"}}>{lang}</h4>
                 <i className="fa-solid fa-down-left-and-up-right-to-center expandIcon"></i>
             </div>
-            <div style={{position:"relative"}} useRef={rootRef}>
+            <div className='consoleContainer' useRef={rootRef}>
                 <CodeMirror
                     value={code}
                     onChange={setCode}
                     width="100%"
-                    height="400px"
+                    height={(lang === "javascript") ? "190px" : "300px"}
                     extensions={
                         (lang === "html") ? [langs.html()] : 
                         (lang === "css") ? [langs.css()] : 
@@ -60,13 +60,18 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
                     theme = {(isDark) ? abcdef : bbedit}
                 />
                 {(lang === "javascript" && isExpanded === lang) && 
-                    <div style={{position:"absolute", bottom:"0", width:"100%", color: isDark ? "white" : "black"}}>
+                    <div style={{color: isDark ? "white" : "black", backgroundColor: isDark ? "#0f0f0f" : "white"}} className="consoleClass">
                         <div className="consoleHeader">
-                            <h4>Console</h4>
+                            <h4>console</h4>
                             <button className='consoleBtn' onClick={clickHandler}>RUN</button>
                         </div>
-                        <ul style={{height:"80px", padding:"0 .5em", overflowY:"scroll", fontFamily: "monospace",}}>
-                            {consoleMsgs.map(item => <li style={{paddingLeft:"1rem"}}>{`> ${item}`}</li>)}
+                        <ul style={{height:"70px", overflow:"scroll", fontFamily: "monospace",}}>
+                            {consoleMsgs.map((item,i) => {
+                                return (
+                                    <li key={i} style={{paddingLeft:".5rem"}}>
+                                        {`> ${item}`}
+                                    </li>)
+                                })}
                         </ul>
                     </div>
                 }

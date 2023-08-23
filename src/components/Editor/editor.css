@@ -5,7 +5,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #B087FD;
     padding: .5rem;
 }
 .expandIcon {
@@ -54,6 +53,15 @@
     background-color: rgb(177, 255, 229);
     border: solid #000 2.2px;
     cursor: pointer;
+}
+.consoleClass{
+    bottom:0px;
+    width:100%;
+}
+.consoleContainer {
+    height:300px;
+    display:flex;
+    flex-direction: column;
 }
 
 @media (max-width:1000px) {

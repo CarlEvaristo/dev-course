@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import { courses } from "../data"
 
 export default function Courses() {
@@ -10,9 +9,8 @@ export default function Courses() {
         <ul>
             {courses.map(item => {
                 return ( 
-                    <li>
+                    <li key={item.id}>
                         <Link 
-                            key={item.id}
                             to={`/courses/${item.id}`}
                         >
                             {item.title}

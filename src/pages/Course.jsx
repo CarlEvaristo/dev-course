@@ -1,17 +1,16 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import Box from '../components/Box'
-import { courseData } from "../course-data"
-import "./course.css"
 import Ide from '../components/Editor/Ide'
+import { courses } from "../data"
+import "./course.css"
 
 export default function Course() {
   const {id} = useParams()
-  const course = courseData.find(item => item.id === id)
-
+  const course = courses.find(item => item.id === id)
   const boxStyle = {
     width:"100%",
-    backgroundColor: "#FDCA01",
+    backgroundColor: "#E9E5E2",
     padding: "1rem",
   }
 
@@ -19,7 +18,7 @@ export default function Course() {
     <>
         <h1>{course.title}</h1>
         <p>{course.content}</p>
-        <>
+        <div className='editor-box'>
           {course.challenges.map(item => {
             return (
               <Box className='challenges' style={boxStyle}>
@@ -29,7 +28,7 @@ export default function Course() {
               </Box>)
           })
           }
-        </>
+        </div>
     </>
   )
 }

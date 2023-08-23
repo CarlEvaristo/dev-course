@@ -3,6 +3,7 @@ export const courseData = [
         "id": "0001",
         "title": "Web dev basics",
         "content": "Life finds a way. God creates dinosaurs. God destroys dinosaurs. Life finds a way. God creates dinosaurs. God destroys dinosaurs. Life finds a way. God creates dinosaurs. God destroys dinosaurs. ",
+        "pro": false,
         "examples": [
             `console.log("Hello world!")`,
             `function add(arg1, arg2) {

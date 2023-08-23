@@ -11,9 +11,9 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    padding: .5rem;
+    padding: 1rem;
 }
 .theme-toggle {
     cursor: pointer;
@@ -21,9 +21,20 @@
 .browser-header {
     width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    background-color: #B087FD;
     padding: .5rem;
+}
+.browserBtns {
+    display: flex;
+    align-items: center;
+}
+.dot {
+    height: 13px;
+    width: 13px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: .2em;
 }
 
 @media (max-width:1000px) {
