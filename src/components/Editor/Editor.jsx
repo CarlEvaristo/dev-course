@@ -15,7 +15,7 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
 
     React.useEffect(()=>{
         ["html", "css"].includes(lang) && setSrcDoc(prev => ({...prev, [lang]: code}))
-    },[code])
+    },[code, lang, setSrcDoc])
 
     React.useEffect(()=>{
         setConsoleMsgs(prev => {
@@ -23,7 +23,7 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
                 [...prev, console] :
                 [...prev]
         })
-    },[srcDoc])
+    },[srcDoc, console])
 
     function clickHandler() {
         setSrcDoc(prev => ({...prev, [lang]: code}))
