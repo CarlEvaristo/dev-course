@@ -35,6 +35,7 @@
     border-radius: 50%;
     display: inline-block;
     margin: .2em;
+    cursor: pointer;
 }
 
 @media (max-width:1000px) {

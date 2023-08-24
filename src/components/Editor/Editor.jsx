@@ -20,7 +20,7 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
     React.useEffect(()=>{
         setConsoleMsgs(prev => {
             return (console !== prev[0]) ? 
-                [...prev, console] :
+                [console, ...prev] :
                 [...prev]
         })
     },[srcDoc, console])

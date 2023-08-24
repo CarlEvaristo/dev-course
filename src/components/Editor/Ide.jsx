@@ -8,7 +8,7 @@ import "./ide.css"
 export default function Ide({ htmlinput, css, javascript }) {
   const [isDark, setIsDark] = React.useState(false)
   const [isExpanded, setIsExpanded] = React.useState("html");  // 1,"html", "css", or "javascript"
-  
+  const [browser, setBrowser] = React.useState("small"); 
   const [srcDoc, setSrcDoc] = React.useState({
     html: htmlinput,
     css:css,
@@ -26,7 +26,7 @@ export default function Ide({ htmlinput, css, javascript }) {
   let boxStyle = {
     margin:"0px",
     width: "100%",
-    aspectRatio:"2",
+    height: "100%",
   }
 
   return (
@@ -46,20 +46,19 @@ export default function Ide({ htmlinput, css, javascript }) {
             <div className="browser-header" style={{backgroundColor: "#F4F5F0"}}>
               <h4>browser</h4>
               <div className='browserBtns'>
-                <span class="dot" style={{backgroundColor: "#B087FD"}}></span>
-                <span class="dot" style={{backgroundColor: "#FDCA01"}}></span>
-                <span class="dot" style={{backgroundColor: "#FF704E"}}></span>
+                <span className="dot" style={{backgroundColor: "#B087FD"}} onClick={()=>setBrowser("open")} ></span>
+                <span className="dot" style={{backgroundColor: "#FDCA01"}} onClick={()=>setBrowser("small")} ></span>
+                <span className="dot" style={{backgroundColor: "#FF704E"}} onClick={()=>setBrowser("closed")} ></span>
               </div>
             </div>
-            <iframe
+            {(["open","small"].includes(browser)) && <iframe
               srcDoc={sourceBrowser}
               title="output"
               sandbox="allow-scripts"
               frameBorder="0"
               width="100%"
-              height="100%"
-            />
-            {/* <CustomConsole jsSource={sourceConsole} /> */}
+              height={(browser === "open") ? "500px" : "200px"}
+            />}
           </Box>
         </div>
     </div>
