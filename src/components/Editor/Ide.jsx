@@ -30,15 +30,33 @@ export default function Ide({ htmlinput, css, javascript }) {
     <html>
       <style>
         ${srcDoc.css}
-        ${styles.test}
+        .browserContainer {
+          flex: 6;
+        }
+        .consoleContainer {
+          flex: 4;
+        }
+        body {
+          flex-direction:row; 
+        }
+        @media (max-width:1000px) {
+          body {
+              flex-direction: column;
+          }
+          .consoleContainer {
+            flex: 4;
+            border-top: 2px solid black;
+          }
+        }
+
       </style>
-      <body class="test" style="overflow: hidden; display:flex; flex-direction:column; width:100%; height:100vh; margin: 0; padding:0;">
-        <div style="width:100%; height:60vh;overflow-y:scroll; ">
+      <body style="overflow: hidden; display:flex; width:100%; height:100vh; margin: 0; padding:0;">
+        <div class="browserContainer" style="width:100%; overflow-y:scroll; ">
           ${srcDoc.html}
         </div>
 
-        <div style="width:100%; height:40vh; margin: 0; padding: 0;  z-index: 100000; overflow-y: scroll; background-color: white;">
-          <div style="position: absolute; top: auto; width: 100%; display: flex; align-items: center; padding: .5rem; background-color: #F4F5F0; border-top: 2px solid black;  font-family: 'Roboto', sans-serif; font-size: 1rem; font-weight: bold;">
+        <div class="consoleContainer" style="width:100%; margin: 0; padding: 0;  z-index: 100000; overflow-y: scroll; background-color: white;">
+          <div style="position: absolute; top: auto; width: 100%; display: flex; align-items: center; padding: .5rem; background-color: #F4F5F0; font-family: 'Roboto', sans-serif; font-size: 1rem; font-weight: bold;">
             console
           </div>
           <ul id="consoleList" style="margin: 3rem 1rem 1rem; padding: 0; overflow: hidden; font-family: 'Courier'; font-size: .8rem; list-style-type: none;" ></ul>
@@ -77,7 +95,7 @@ export default function Ide({ htmlinput, css, javascript }) {
             logOutputs.forEach(item => {
                 const listItem = document.createElement('li');
                 const preElement = document.createElement('pre');
-                preElement.textContent = '▶ ' + item;
+                preElement.textContent = '>  ' + item;
                 listItem.appendChild(preElement);
                 preElement.style.margin = '.2em 0';
                 myList.appendChild(listItem);

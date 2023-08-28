@@ -26,6 +26,7 @@
     align-items: center;
     padding: .5rem;
     background-color: #F4F5F0;
+    border-bottom: 2px solid black;
 }
 .browserBtns {
     display: flex;
