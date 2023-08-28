@@ -2,7 +2,7 @@ export const courses = [
     {
         "id": "0001",
         "title": "Web dev basics",
-        "content": "Life finds a way. God creates dinosaurs. God destroys dinosaurs. Life finds a way. God creates dinosaurs. God destroys dinosaurs. Life finds a way. God creates dinosaurs. God destroys dinosaurs. ",
+        "content": "Life finds a way. God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs.",
         "pro": false,
         "challenges":[
             {

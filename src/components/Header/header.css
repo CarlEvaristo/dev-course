@@ -75,7 +75,7 @@ header {
 
 /* ====== MEDIA QUERIES ====== */
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
     .header-container {
         position: relative;
     }

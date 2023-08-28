@@ -19,9 +19,9 @@ export default function Course() {
         <h1>{course.title}</h1>
         <p>{course.content}</p>
         <div className='editor-box'>
-          {course.challenges.map(item => {
+          {course.challenges.map((item, i) => {
             return (
-              <Box className='challenges' style={boxStyle}>
+              <Box className='challenges' style={boxStyle} key={i}>
                 <h1>{`Challenge ${item.id}`}</h1>
                 <p>{item.challenge}</p>
                 <Ide htmlinput={item.html} css={item.css} javascript={item.javascript}/>

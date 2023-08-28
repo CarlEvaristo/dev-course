@@ -1,8 +1,8 @@
 import React from 'react'
 import Editor from './Editor'
 import Box from '../Box';
-// import CustomConsole from './CustomConsole';
-
+import preprocess from './transpiler';
+import styles from "./browser.module.css"
 import "./ide.css"
 
 export default function Ide({ htmlinput, css, javascript }) {
@@ -15,16 +15,83 @@ export default function Ide({ htmlinput, css, javascript }) {
     javascript: javascript,
   })
 
+  let processedJs;
+  let logErr;
+
+  // Why I use Babel standalone compiler/preprocessor? Readme for info.
+  try {
+    processedJs = preprocess(srcDoc.javascript)  
+    processedJs = `'${processedJs}'`.replace(/\n/g, ';');
+  } catch(error) {
+    logErr = `'${error}'`.replace(/\n/g, ';')
+  }
+  
   const sourceBrowser = `
     <html>
-      <body>${srcDoc.html}<script>${srcDoc.javascript}</script></body>
-      <style>${srcDoc.css}</style>
+      <style>
+        ${srcDoc.css}
+        ${styles.test}
+      </style>
+      <body class="test" style="overflow: hidden; display:flex; flex-direction:column; width:100%; height:100vh; margin: 0; padding:0;">
+        <div style="width:100%; height:60vh;overflow-y:scroll; ">
+          ${srcDoc.html}
+        </div>
+
+        <div style="width:100%; height:40vh; margin: 0; padding: 0;  z-index: 100000; overflow-y: scroll; background-color: white;">
+          <div style="position: absolute; top: auto; width: 100%; display: flex; align-items: center; padding: .5rem; background-color: #F4F5F0; border-top: 2px solid black;  font-family: 'Roboto', sans-serif; font-size: 1rem; font-weight: bold;">
+            console
+          </div>
+          <ul id="consoleList" style="margin: 3rem 1rem 1rem; padding: 0; overflow: hidden; font-family: 'Courier'; font-size: .8rem; list-style-type: none;" ></ul>
+        </div>
+        <script>
+          
+
+            let logOutputs = []
+            const originalLog = console.log
+            const originalError = console.error;
+            const originalWarning = console.warn;
+            const originalInfo = console.info;
+            const originalClear = console.clear;
+
+            console.log = (...args) => logOutputs.push(...args)
+            console.error = (error) => logOutputs.push(error.toString() + error.stack)
+            console.warn = (...args) => logOutputs.push(...args)
+            console.info = (...args) => logOutputs.push(...args)
+            console.clear = (...args) => logOutputs.push(...args)
+
+            try {
+              new Function(${processedJs})();
+            } catch(error) {} //escaped catch block, i have custom error handling below
+          
+            try {
+              ${logErr}.split(";").forEach(item => logOutputs.push(item))
+            } catch(error) {}
+            
+            console.log = originalLog
+            console.error = originalError 
+            console.warn = originalWarning
+            console.info = originalInfo
+            console.clear = originalClear
+
+            const myList = document.getElementById('consoleList');
+            logOutputs.forEach(item => {
+                const listItem = document.createElement('li');
+                const preElement = document.createElement('pre');
+                preElement.textContent = '▶ ' + item;
+                listItem.appendChild(preElement);
+                preElement.style.margin = '.2em 0';
+                myList.appendChild(listItem);
+            });
       
+
+        </script>
+      </body>
     </html>
   `
 
   let boxStyle = {
     margin:"0px",
+    padding:"0px",
     width: "100%",
     height: "100%",
   }
@@ -43,7 +110,7 @@ export default function Ide({ htmlinput, css, javascript }) {
         </div> 
         <div className="pane"> 
           <Box style={boxStyle}>
-            <div className="browser-header" style={{backgroundColor: "#F4F5F0"}}>
+            <div className="browser-header">
               <h4>browser</h4>
               <div className='browserBtns'>
                 <span className="dot" style={{backgroundColor: "#B087FD"}} onClick={()=>setBrowser("open")} ></span>
@@ -54,10 +121,10 @@ export default function Ide({ htmlinput, css, javascript }) {
             {(["open","small"].includes(browser)) && <iframe
               srcDoc={sourceBrowser}
               title="output"
-              sandbox="allow-scripts"
+              sandbox="allow-modals allow-scripts"
               frameBorder="0"
               width="100%"
-              height={(browser === "open") ? "500px" : "200px"}
+              height={(browser === "open") ? "800px" : "400px"}
             />}
           </Box>
         </div>
