@@ -37,3 +37,8 @@ I put the script tag on the index html page:
     <div id="root"></div>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </body>
+
+Safe cross orign way to send data from iframe window to parent window:
+
+- window.top.postMessage method
+- window.onmessage method
