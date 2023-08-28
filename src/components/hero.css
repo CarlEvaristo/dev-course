@@ -13,12 +13,12 @@
     justify-content: center;
 }
 .heroImage {
-    width:50%;
+    width:45%;
     aspect-ratio: 1.01;
     border: solid #000 2px;
     border-radius: 3px;
     box-shadow: 3px 3px 0px 0px #000;
-    background-image: url("../../public/images/cat-typing.gif");
+    background-image: url("../../public/images/cat-typing.webp");
     background-position: center center;
     background-size: contain;
 

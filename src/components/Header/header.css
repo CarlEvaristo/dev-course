@@ -20,7 +20,7 @@ header {
 .header-container {
     margin: 0 auto;
     height:100%;
-    max-width: 1000px;
+    /* max-width: 1000px; */
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -75,10 +75,15 @@ header {
 
 /* ====== MEDIA QUERIES ====== */
 
-@media (max-width: 700px) {
-
+@media (max-width: 1000px) {
+    .header-container {
+        position: relative;
+    }
     .menu {
-        margin: 0 0 0 auto;
+        position:absolute;
+        visibility:hidden;
+        top:-80px;
+        right:0px;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -89,17 +94,12 @@ header {
         box-shadow: 3px 3px 0px 0px #000;
         padding: 4rem 1rem 1rem;
     }
-    .link:last-child {
-        margin-right: 10px;
-    }
     .moveDown{
-        top:0px;
+        visibility:visible;
         transform:translateY(70px);
         transition: transform 150ms;
     }
     .moveUp{
-        top:0px;
-        transform:translateY(-250px);
-        transition: transform 150ms;
+        visibility:hidden;
     }
 }

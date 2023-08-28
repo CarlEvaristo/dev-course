@@ -1,62 +1,73 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
+
 import Box from './Box'
+import Popup from './Popup';
+
 import "./carousel.css"
+import { courses } from "../data"
 
 export default function Carousel() {
     const [scrolledStep, setScrolledStep] = React.useState(0);
-    const numItems = 15
+    const numItems = courses.length
     const visibleItems = 3
-    const containerWidth = 200
+    const containerWidth = 250
 
-    const galleryContainer = {
-        margin: "1rem 0 1rem 1rem",
+    const [showPopup, setShowPopup] = React.useState(false)
+
+    function popupHandler() {
+        setShowPopup(prev => !prev)
+    }
+
+    const inactiveCourse = {
+        margin: "1rem 0",
         width: `${containerWidth}px`,
         aspectRatio: "1",
+        backgroundColor: "#c1c2be",
+        color:"#767674",
+        padding: "1rem",
     }
 
-    const firstContainer = {...galleryContainer, margin: "1rem 0"}
-
-    React.useEffect(()=>{
-        console.log(scrolledStep)
-    },[scrolledStep])
+    const activeCourse = {...inactiveCourse, backgroundColor: "#fff"}
 
     const handleClick = (direction) => {
-        // (direction === "left" && currentItem > 1) && setCurrentItem(prev => prev - 1)
-        // (direction === "right" && currentItem < numItems) && setCurrentItem(prev => prev + 1)
-        switch (direction) {
-            case "left":
-                setScrolledStep(prev => prev - 1)
-                break;
-            case "right":
-                setScrolledStep(prev => prev + 1)
-                break;
-        }
+        (direction === "left") ? setScrolledStep(prev => prev - 1) : setScrolledStep(prev => prev + 1)
     }
+
     return (
-        <section className="carousel">
-            <div className="sideScroll" style={{marginLeft:`${(-1 * scrolledStep * containerWidth)}px`, transition: "margin-left .5s ease-in-out",}}>
-                <Box style={firstContainer}>1</Box>
-                <Box style={galleryContainer}>2</Box>
-                <Box style={galleryContainer}>3</Box>
-                <Box style={galleryContainer}>4</Box>
-                <Box style={galleryContainer}>5</Box>
-                <Box style={galleryContainer}>6</Box>
-                <Box style={galleryContainer}>7</Box>
-                <Box style={galleryContainer}>8</Box>
-                <Box style={galleryContainer}>9</Box>
-                <Box style={galleryContainer}>10</Box>
-                <Box style={galleryContainer}>11</Box>
-                <Box style={galleryContainer}>12</Box>
-                <Box style={galleryContainer}>13</Box>
-                <Box style={galleryContainer}>14</Box>
-                <Box style={galleryContainer}>15</Box>
-            </div>
-            {((numItems - scrolledStep) > visibleItems) && <div className='sideScrollBtn' onClick={()=>handleClick("right")} >
-                <i class="fa-solid fa-chevron-right"></i>
-            </div>}
-            {(scrolledStep > 0) && <div className='sideScrollBtn leftBtn' onClick={()=>handleClick("left")} >
-                <i class="fa-solid fa-chevron-left"></i>
-            </div>}
-        </section>
+        <>
+            {showPopup && 
+                <Popup showPopup={showPopup} clickHandler={popupHandler}>
+                    <p>Please login for free to get access to all the courses.</p>
+                    <NavLink to="/login">
+                        <h2>Join Today!</h2>
+                    </NavLink>
+                </Popup>
+            }
+            <section className={`carousel fadeSide ${(scrolledStep > 0) && "fadeLeft"}`} >
+                    <div className="sideScroll" style={{marginLeft:`${(-1 * scrolledStep * containerWidth)}px`, transition: "margin-left .5s ease-in-out",}}>
+                        {courses.map(item => {
+                            return (!item.pro) ?
+                                <NavLink to={`/courses/${item.id}`} key={item.id}>
+                                    <Box style={activeCourse}>
+                                        <h2>{item.title}</h2>
+                                    </Box>
+                                </NavLink>:
+                                <div onClick={popupHandler} key={item.id}> 
+                                    <Box style={inactiveCourse}>
+                                        <h2>{item.title}</h2>
+                                    </Box>
+                                </div>
+                        })}
+                    </div>
+                    {((numItems - scrolledStep) > visibleItems) && <div className='sideScrollBtn' onClick={()=>handleClick("right")} >
+                        <i className="fa-solid fa-chevron-right"></i>
+                    </div>}
+                    {(scrolledStep > 0) && <div className='sideScrollBtn leftBtn' onClick={()=>handleClick("left")} >
+                        <i className="fa-solid fa-chevron-left"></i>
+                    </div>}
+
+            </section>
+        </>
     )
 }

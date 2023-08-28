@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
-import HamburgerButton from './HamburgerButton';
-import useScrollPosition from '../hooks/useScrollPosition';
+import HamburgerButton from "./HamburgerButton"
+import useScrollPosition from '../../hooks/useScrollPosition';
 import "./header.css"
 
 export default function Header() {
@@ -25,6 +24,7 @@ export default function Header() {
             </div>
             <nav className={`menu ${ menuOn ? "moveDown" : "moveUp" }`}>
                 <NavLink
+                onClick={() => setMenuOn(false)}
                 to="/"
                 className={`link ${location.pathname === "/" && "active-link"}`}
                 >
@@ -32,6 +32,7 @@ export default function Header() {
                 </NavLink>
 
                 <NavLink
+                    onClick={() => setMenuOn(false)}
                     to="/courses"
                     className={`link ${location.pathname === "/courses" && "active-link"}`}
                 >
@@ -39,10 +40,11 @@ export default function Header() {
                 </NavLink>
 
                 <NavLink
+                    onClick={() => setMenuOn(false)}
                     to="/login"
                     className={`link ${location.pathname === "/login" && "active-link-login"}`}
                 >
-                    <i class="fa-solid fa-user"></i> Login
+                    <i className="fa-solid fa-user"></i> Login
                 </NavLink>
             </nav>
 

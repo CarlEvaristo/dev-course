@@ -6,6 +6,7 @@ export default function Login() {
     width: "40vw",
     zIndex: "0",
     backgroundColor: "red",
+    padding: "1rem",
   }
 
   return (

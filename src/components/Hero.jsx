@@ -2,14 +2,16 @@ import React from 'react'
 import "./hero.css"
 import Box from './Box'
 
+const boxStyle = {
+  marginRight:"-200px",
+  height: "fit-content",
+  width:"120%",
+  zIndex: "0",
+  backgroundColor: "#FDCA01",
+  padding: "1rem 3rem",
+}
+
 export default function Hero() {
-  const boxStyle = {
-    marginRight:"-200px",
-    height: "fit-content",
-    width:"120%",
-    zIndex: "0",
-    backgroundColor: "yellow",
-  }
 
   return (
     <div className='hero'>
