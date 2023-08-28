@@ -14,6 +14,16 @@ export default function Ide({ htmlinput, css, javascript }) {
     css:css,
     javascript: javascript,
   })
+  console.log(`
+    <html>
+      <style>
+        ${srcDoc.css}
+      </style>
+      <body> 
+        ${srcDoc.html}
+      </body>
+    </html>
+  `)
 
   // Why I use Babel standalone compiler/preprocessor? Readme for info.
   const [processedJs, logErr] = useMemo(() => {

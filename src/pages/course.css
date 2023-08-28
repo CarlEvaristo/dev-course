@@ -10,10 +10,11 @@
     display: flex;
     justify-content:space-between;
     align-items: flex-start;
-    column-gap: 1rem;
+    column-gap: 5rem;
 }
 .titleBox {
-    flex:8 ;
+    flex:8;
+    text-align: justify;
 }
 .btnBox {
     display: flex;
@@ -51,6 +52,9 @@
 }
 
 @media (max-width:1000px) {
+    .challengeContainer {
+        column-gap: 1rem;
+    }
     .btnBox {
         flex-direction: column;
     }

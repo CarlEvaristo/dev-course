@@ -2,15 +2,19 @@ export const courses = [
     {
         "id": "0001",
         "title": "Web dev basics",
-        "content": "Life finds a way. God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs.",
+        "content": "The absolute beginners HTML and CSS basics. Make basic layouts and style them.",
         "pro": false,
         "challenges":[
             {
                 "id": "1",
-                challenge: "The following function doesn't return anything, please tweak the javascript code to make it work. The desired outcome is when the h1 title reads 'Hello world!'",
+                challenge: `The following function doesn't return anything, please tweak the javascript code to make it work. \nThe desired outcome is when the h1 title reads 'Hello world!'`,
                 html: "<h1>Hello </h1>",
                 css:"h1 {\n  color: grey;\n}",
                 javascript: `function returnGreet() {\n  const title = document.getElementsByTagName("h1")[0];\n  title.textContent += arg;\n};\nreturnGreet("world!");`,
+                solution: {
+                    browser:`<h1>Hello world!</h1>`,
+                    console:`test`
+                }
             },
             // {
             //     "id": "2",

@@ -2,7 +2,7 @@ export const courseData = [
     {
         "id": "0001",
         "title": "Web dev basics",
-        "content": "Life finds a way. God creates dinosaurs. God destroys dinosaurs. Life finds a way. God creates dinosaurs. God destroys dinosaurs. Life finds a way. God creates dinosaurs. God destroys dinosaurs. ",
+        "content": "The absolute beginners HTML and CSS basics. Make basic layouts and style them.",
         "pro": false,
         "examples": [
             `console.log("Hello world!")`,

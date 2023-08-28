@@ -6,7 +6,7 @@ import { courses } from "../data"
 import "./course.css"
 
 export default function Course() {
-  const [isFinished, setIsFinished] = useState(false)
+  const [result, setResult] = useState("")
   const [output, setOutput] = useState("")
   const {id} = useParams()
   const course = courses.find(item => item.id === id)
@@ -33,12 +33,16 @@ export default function Course() {
   }
 
   function clickHandler() {
-    setIsFinished(true)
+    if (course.challenges[0].solution.console === output[0]) {
+      setResult("Correct!")
+    } else {
+      setResult("Try again!")
+    }
   }
 
   return (
     <>
-        <h1>{course.title}</h1>
+        <h1 className='courseTitle'>{course.title}</h1>
         <p>{course.content}</p>
         <div className='editor-box'>
           {course.challenges.map((item, i) => {
@@ -46,9 +50,9 @@ export default function Course() {
               <Box className='challenges' style={boxStyle} key={i}>
                 <div className="challengeContainer">
                   <div className="titleBox">
-                    <h1>{`Challenge ${item.id}`}</h1>
+                    <h2>{`Challenge ${item.id}`}</h2>
                     <p>{item.challenge}</p>
-                    <p style={{backgroundColor: "yellow"}}>{isFinished ? `${output}` : "-"}</p>
+                    <p style={{backgroundColor: "yellow"}}>{`Result: ${result}`}</p>
                   </div>
                   <div className="btnBox">
                     <button className='challengeBtn' onClick={clickHandler}>Check Score</button>
