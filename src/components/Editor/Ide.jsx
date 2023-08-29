@@ -5,7 +5,7 @@ import preprocess from './transpiler';
 import generateSourceBrowser from './iframe';
 import "./ide.css"
 
-export default function Ide({ htmlinput, css, javascript }) {
+export default function Ide({ htmlinput, css, javascript, browserTest }) {
   const [isDark, setIsDark] = useState(false)
   const [isExpanded, setIsExpanded] = useState("html");  // 1,"html", "css", or "javascript"
   const [browser, setBrowser] = useState("small"); 
@@ -13,6 +13,7 @@ export default function Ide({ htmlinput, css, javascript }) {
     html: htmlinput,
     css:css,
     javascript: javascript,
+    browserTest: browserTest,
   })
   console.log(`
     <html>

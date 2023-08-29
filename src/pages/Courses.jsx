@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { courses } from "../data"
+import { courses } from "../course-data"
 
 export default function Courses() {
   return (

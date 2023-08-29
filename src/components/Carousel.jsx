@@ -5,7 +5,7 @@ import Box from './Box'
 import Popup from './Popup';
 
 import "./carousel.css"
-import { courses } from "../data"
+import { courses } from "../course-data"
 
 export default function Carousel() {
     const [scrolledStep, setScrolledStep] = React.useState(0);

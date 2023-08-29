@@ -37,9 +37,9 @@ export default function generateSourceBrowser(srcDoc, processedJs, logErr) { ret
       <ul id="consoleList" style="margin: 3rem 1rem 1rem; padding: 0; overflow: hidden; font-family: 'Courier'; font-size: .8rem; list-style-type: none;" ></ul>
     </div>
     <script>
-      
-
         let logOutputs = []
+        let testOutputs = []
+
         const originalLog = console.log
         const originalError = console.error;
         const originalWarning = console.warn;
@@ -78,9 +78,17 @@ export default function generateSourceBrowser(srcDoc, processedJs, logErr) { ret
             myList.appendChild(listItem);
         });
         
+
+        try {
+          eval(testOutputs.push(${srcDoc.browserTest}));
+        } catch(error) {
+          testOutputs.push("RUNTIME TEST " + error);
+        } 
+
         const windowMsg = {
             id: 'uniqueId1',
-            payload: logOutputs
+            consolePayload: logOutputs,
+            browserPayload: testOutputs
         };
 
         window.top.postMessage(windowMsg, '*')
