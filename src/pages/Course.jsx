@@ -19,7 +19,7 @@ export default function Course() {
     function handleOnMessage(event) {
       if (event.data.id === 'uniqueId1') {
         setOutput({
-          console: event?.data.consolePayload[0] === undefined ? `['']` : event.data.consolePayload,
+          console: event?.data.consolePayload[0] === undefined ? "" : event.data.consolePayload,
           browser: event?.data.browserPayload,
         });
       }
