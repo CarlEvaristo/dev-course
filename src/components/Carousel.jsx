@@ -37,7 +37,7 @@ export default function Carousel() {
     return (
         <>
             {showPopup && 
-                <Popup showPopup={showPopup} clickHandler={popupHandler}>
+                <Popup showPopup={showPopup} clickHandler={popupHandler} color="#FDCA01">
                     <p>Please login for free to get access to all the courses.</p>
                     <NavLink to="/login">
                         <h2>Join Today!</h2>
@@ -48,7 +48,7 @@ export default function Carousel() {
                     <div className="sideScroll" style={{marginLeft:`${(-1 * scrolledStep * containerWidth)}px`, transition: "margin-left .5s ease-in-out",}}>
                         {courses.map(item => {
                             return (!item.pro) ?
-                                <NavLink to={`/courses/${item.id}`} key={item.id}>
+                                <NavLink to={`/courses/${item.id}/1`} key={item.id}>
                                     <Box style={activeCourse}>
                                         <h2>{item.title}</h2>
                                     </Box>

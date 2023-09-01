@@ -1,0 +1,64 @@
+.consoleContainer {
+    background-color: #fff;
+    border: solid #000 2px;
+    border-radius: 3px;
+    box-shadow: 3px 3px 0px 0px #000;
+    padding: 0;
+    transition: width .2s ease-in-out;
+    margin-bottom: .5rem;
+    overflow: hidden;
+}
+.consoleHeader {
+    background-color: #51feaf; 
+    color:black;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+}
+.consoleList {
+    padding: 0; 
+    overflow: hidden; 
+    font-family: 'Courier'; 
+    font-size: .8rem; 
+    overflow-y: scroll;
+    height:100%;
+}
+.consoleList li {
+    margin-left: 1rem; 
+}
+.consoleList li:first-of-type {
+    margin-top: 1rem; 
+}
+.expandConsole {
+    width:80%;
+    transition: width .2s ease-in-out;
+}
+.collapseConsole {
+    width:20%;
+    transition: width .2s ease-in-out;
+}
+.darkMode{
+    background-color: black;
+    color: white;
+}
+.lightMode{
+    background-color: white;
+    color: black;
+}
+@media (max-width:1000px) {
+    .consoleContainer {
+        width:100%;
+        height:100%;
+        transition: width .2s ease-in-out;
+    }
+    .expandConsole {
+        height:80%;
+    }
+    .collapseConsole {
+        height:20%;
+    }
+}

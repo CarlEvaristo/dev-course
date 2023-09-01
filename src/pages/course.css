@@ -44,11 +44,8 @@
     border: solid #000 2.2px;
     cursor: pointer;
 }
-.challengeBtn:disabled {
-    background-color: #e4dbd8;
-    box-shadow: 3px 3px 0px 0px #7c7c7c;
-    border: solid #7c7c7c 2px;
-    cursor:auto;
+.challengePopup {
+    padding: 3rem 1rem;
 }
 
 @media (max-width:1000px) {

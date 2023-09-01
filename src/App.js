@@ -29,7 +29,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={ <Home /> } />
             <Route path="/courses" element={ <Courses /> } />
-            <Route path="/courses/:id" element={ <Course /> } />
+            <Route path="/courses/:courseid/:challengeid" element={ <Course /> } />
             <Route path="/login" element={ <Login /> } />
           </Routes>
         </div>

@@ -11,7 +11,7 @@ export default function Courses() {
                 return ( 
                     <li key={item.id}>
                         <Link 
-                            to={`/courses/${item.id}`}
+                            to={`/courses/${item.id}/1`}
                         >
                             {item.title}
                         </Link>

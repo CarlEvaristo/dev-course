@@ -4,7 +4,6 @@
 .pane {
     display: flex;
     width:100%;
-    height:100%;
     gap: 1rem;
     margin-bottom: .3rem;
 }
@@ -17,27 +16,6 @@
     padding: 2rem 0 1rem 1rem;
 }
 .theme-toggle {
-    cursor: pointer;
-}
-.browser-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .5rem;
-    background-color: #F4F5F0;
-    border-bottom: 2px solid black;
-}
-.browserBtns {
-    display: flex;
-    align-items: center;
-}
-.dot {
-    height: 13px;
-    width: 13px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: .2em;
     cursor: pointer;
 }
 

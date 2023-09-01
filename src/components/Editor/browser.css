@@ -1,0 +1,51 @@
+.browser-container {
+    background-color: #fff;
+    border: solid #000 2px;
+    border-radius: 3px;
+    box-shadow: 3px 3px 0px 0px #000;
+    padding: 0;
+    transition: width .2s ease-in-out;
+    overflow: hidden;
+    margin-bottom: .5rem;
+}
+.browser-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+    background-color: #F4F5F0;
+    cursor: pointer;
+}
+.browserBtns {
+    display: flex;
+    align-items: center;
+}
+.dot {
+    height: 13px;
+    width: 13px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: .2em;
+    cursor: pointer;
+}
+.expandBrowser {
+    width:80%;
+    transition: width .2s ease-in-out;
+}
+.collapseBrowser {
+    width:20%;
+    transition: width .2s ease-in-out;
+}
+
+@media (max-width:1000px) {
+    .browser-container {
+        width:100%;
+        transition: width .2s ease-in-out;
+    }
+    .expandBrowser {
+        height:80%;
+    }
+    .collapseBrowser {
+        height:20%;
+    }
+}

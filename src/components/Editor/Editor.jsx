@@ -3,19 +3,15 @@ import CodeMirror from '@uiw/react-codemirror';
 import { langs } from '@uiw/codemirror-extensions-langs';
 import { bbedit } from '@uiw/codemirror-theme-bbedit';
 import { abcdef } from '@uiw/codemirror-themes-all';
-
 import "./editor.css"
 
 export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrcDoc, isDark, color }) {
     const [code, setCode] = React.useState(srcDoc[lang])
 
     React.useEffect(()=>{
-        ["html", "css"].includes(lang) && setSrcDoc(prev => ({...prev, [lang]: code}))
-    },[code])
-
-    function clickHandler() {
+        // ["html", "css"].includes(lang) && setSrcDoc(prev => ({...prev, [lang]: code}))
         setSrcDoc(prev => ({...prev, [lang]: code}))
-    }
+    },[code])
 
     function collapseHandler() {
         setIsExpanded(lang)
@@ -27,7 +23,7 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
                 <h4 style={{overflow:"hidden", marginRight:"20px"}}>{lang}</h4>
                 <i className="fa-solid fa-down-left-and-up-right-to-center expandIcon"></i>
             </div>
-            <div className='consoleContainer'>
+            <div className='editorContainer'>
                 <CodeMirror
                     value={code}
                     onChange={setCode}
@@ -47,9 +43,9 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
                     }}
                     theme = {(isDark) ? abcdef : bbedit}
                 />
-                {(lang === "javascript" && isExpanded === lang) && 
+                {/* {(lang === "javascript" && isExpanded === lang) && 
                 <button className='consoleBtn' onClick={clickHandler}>RUN</button>
-                }
+                } */}
             </div>
 
         </div>
