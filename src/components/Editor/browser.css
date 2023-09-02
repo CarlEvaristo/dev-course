@@ -1,4 +1,6 @@
 .browser-container {
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
     border: solid #000 2px;
     border-radius: 3px;
@@ -10,6 +12,7 @@
 }
 .browser-header {
     display: flex;
+    flex-shrink: 0;
     justify-content: space-between;
     align-items: center;
     padding: .5rem;
@@ -29,23 +32,10 @@
     cursor: pointer;
 }
 .expandBrowser {
-    width:80%;
-    transition: width .2s ease-in-out;
+    flex:7;
 }
 .collapseBrowser {
-    width:20%;
-    transition: width .2s ease-in-out;
+    flex:3;
 }
 
-@media (max-width:1000px) {
-    .browser-container {
-        width:100%;
-        transition: width .2s ease-in-out;
-    }
-    .expandBrowser {
-        height:80%;
-    }
-    .collapseBrowser {
-        height:20%;
-    }
-}
+
