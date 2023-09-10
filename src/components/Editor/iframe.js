@@ -59,14 +59,16 @@ export default function generateSourceBrowser(srcDoc) {
         </script>
 
         <script>
+          let browserOut
           const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
               try {
-                const browserOut = ${srcDoc.browserTest}
+                browserOut = ${srcDoc.browserTest}
                 testOutputs = [browserOut];
               } catch(error) {
                 testOutputs = [error];
               } 
+
               const windowMsg = {
                 id: 'uniqueId1',
                 consolePayload: logOutputs,
