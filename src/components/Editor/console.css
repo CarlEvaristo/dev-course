@@ -33,6 +33,7 @@
 }
 .consoleList li {
     margin-left: 1rem; 
+    line-height: 1.2;
 }
 .consoleList li:first-of-type {
     margin-top: 1rem; 

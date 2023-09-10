@@ -8,21 +8,31 @@
 }
 .challengeContainer {
     display: flex;
+    flex-direction: column;
+}
+.challengeHeader{
+    display: flex;
     justify-content:space-between;
     align-items: flex-start;
     column-gap: 5rem;
+    margin-bottom: 1rem;
 }
 .titleBox {
-    flex:8;
+    flex:5;
     text-align: justify;
 }
 .btnBox {
     display: flex;
+    justify-content: flex-end;
     gap: .7rem;
-    flex:2;
+    flex:5;
+}
+.challengeText {
+    width:90%;
+    max-width:700px;
 }
 .challengeBtn {
-    width:100%;
+    width:30%;
     font-size: 1rem;
     font-weight: 700;
     bottom: 10px;
@@ -30,7 +40,7 @@
     border: solid #000 2px;
     border-radius: 3px;
     box-shadow: 3px 3px 0px 0px #000;
-    padding: 1em 2em;
+    padding: 1em;
     background-color: #FF704E;
     transition: transform .1s ease-in-out;
 }
@@ -49,13 +59,13 @@
 }
 
 @media (max-width:1000px) {
-    .challengeContainer {
-        column-gap: 1rem;
+    .challengeBtn {
+        width:100%;
+    }
+    .titleBox {
+        flex:7;
     }
     .btnBox {
-        flex-direction: column;
-    }
-    .challengeBtn {
-        padding: 1em;
+        flex:3;
     }
 }

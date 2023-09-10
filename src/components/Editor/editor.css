@@ -39,7 +39,6 @@
     overflow: hidden;
 }
 
-
 @media (max-width:1000px) {
     .editorBox {
         transition: none;

@@ -22,6 +22,7 @@ export default function Console({ expandBrowser, setExpandBrowser, isDark }) {
         <div className={`consoleContainer ${(expandBrowser === "console") ? "expandConsole" : "collapseConsole"} ${isDark ? "darkMode" : "lightMode"}`} onClick={()=>setExpandBrowser("console")} >
             <div className="consoleHeader">
                 <h4 style={{overflow:"hidden", marginRight:"20px"}}>console</h4>
+                <i className="fa-solid fa-down-left-and-up-right-to-center expandIcon"></i>
             </div>
             <ul className="consoleList">
                 {output.map((item,i) => <li key={i}><span style={{ whiteSpace: 'pre' }} >{`> ${item}`}</span></li>)}

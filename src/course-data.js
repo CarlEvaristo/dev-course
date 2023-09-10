@@ -1,5 +1,3 @@
-const minify = it => it.replace('                  ', ' ')
-
 export const courses = [
 {
 "id": "1",
@@ -7,20 +5,20 @@ export const courses = [
 "content": "The absolute beginners HTML and CSS basics. Make basic layouts and style them.",
 "pro": false,
 "challenges":[
-    {
+{
         id: "1",
         title: "Hello World!",
-        challenge: `The following function doesn't return anything, please tweak the javascript code to make it work. \nThe desired outcome is when the h1 title reads 'Hello world!'`,
+        challenge: `The following function doesn't return anything, please tweak the javascript code to make it work. \nThe desired outcome is when the h1 title reads 'Hello world!'. \nYou can check the console for error(s), that will get you on the right track.`,
         html: "<h1>Hello </h1>",
         css:"h1 {\n  color: grey;\n}",
         javascript: `function returnGreet() {\n  const title = document.getElementsByTagName("h1")[0];\n  title.textContent += arg;\n};\nreturnGreet("world!");`,
-        browserTest: `(() => document.getElementsByTagName("h1")[0].textContent)()`,
+        browserTest: `document.getElementsByTagName("h1")[0].textContent`,
         solution: {
             browser:"Hello world!",
             console: "",
         }
-    },
-    {
+},
+{
         id: "2",
         title: "Hello Galaxy!",
         challenge: `The following function doesn't return anything, please tweak the javascript code to make it work. \nThe desired outcome is when the h1 title reads 'Hello galaxy!'`,
@@ -230,14 +228,42 @@ export const courses = [
                     browser:"",
                     console: "",
                 }
-            },
-        ],
-    },
-    {
-        "id": "2",
-        "title": "CSS basics",
-        "content": "Must go faster... go, go, go, go, go! We gotta burn the rain forest, dump toxic waste, pollute the air, and rip up the OZONE! 'Cause maybe if we screw up this planet enough, they won't want it anymore! Yes, Yes, without the oops! Yeah, but John, if The Pirates of the Caribbean breaks down, the pirates don’t eat the tourists.",
-        "pro": true,
-        "challenges": [],
-    },
+},
+{
+    id: "3",
+    title: "Hello Universe!",
+    challenge: `The following function doesn't return anything, please tweak the javascript code to make it work. \nThe desired outcome is when the h1 title reads 'Hello world!'`,
+    html: "<div id='root'></div>",
+    css:"",
+    javascript: `function App () {\n  console.log("test")\n\n  return (\n      <div>Hi!</div>\n    );\n}\n\nReactDOM.render(\n   <React.StrictMode>\n        <App />\n   </React.StrictMode>,\ndocument.getElementById("root")\n);`,
+    browserTest: ``,
+    solution: {
+        browser:"",
+        console: "",
+    }
+},
+],
+},
+{
+"id": "2",
+"title": "Web dev advanced",
+"content": "Advanced HTML and CSS. Take your layouts and styling to the next level.",
+"pro": false,
+"challenges":[
+{
+        id: "1",
+        title: "Hello World!",
+        challenge: `The following function doesn't return anything, please tweak the javascript code to make it work. \nThe desired outcome is when the h1 title reads 'Hello world!'`,
+        html: "<h1>Hello </h1>",
+        css:"h1 {\n  color: grey;\n}",
+        javascript: `function returnGreet() {\n  const title = document.getElementsByTagName("h1")[0];\n  title.textContent += arg;\n};\nreturnGreet("world!");`,
+        browserTest: `(() => document.getElementsByTagName("h1")[0].textContent)()`,
+        solution: {
+            browser:"Hello world!",
+            console: "",
+        }
+},
+]
+}
+
 ]

@@ -1,20 +1,11 @@
 import React, { useMemo } from 'react'
-import preprocess from './transpiler';
 import generateSourceBrowser from './iframe';
 import "./browser.css"
 
 export default function Browser({ srcDoc, expandBrowser, setExpandBrowser, browserSize, setBrowserSize }) {
     // Why I use Babel standalone compiler/preprocessor? Readme for info.
-    const [processedJs, logErr] = useMemo(() => {
-        try {
-        const js = preprocess(srcDoc.javascript);
-        return [`'${js}'`.replace(/\n/g, ';'), null];
-        } catch (error) {
-        return [null, `'COMPILE ${error}'`.replace(/\n/g, ';')]; // COMPILE ERROR
-        } 
-    }, [srcDoc.javascript]);
 
-    const sourceBrowser = useMemo(() => generateSourceBrowser(srcDoc, processedJs, logErr), [srcDoc, processedJs, logErr]);
+    const sourceBrowser = useMemo(() => generateSourceBrowser(srcDoc), [srcDoc]);
 
     return (
         <div className={`browser-container ${(expandBrowser === "browser") ? "expandBrowser" : "collapseBrowser"}`} onClick={()=>setExpandBrowser("browser")}>
@@ -30,7 +21,7 @@ export default function Browser({ srcDoc, expandBrowser, setExpandBrowser, brows
             srcDoc={sourceBrowser}
             title="output"
             sandbox="allow-modals allow-scripts"
-            frameBorder="nul"
+            frameBorder="null"
             width="100%"
             height="100%"
             style={{display: "block"}}

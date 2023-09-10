@@ -9,7 +9,6 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
     const [code, setCode] = React.useState(srcDoc[lang])
 
     React.useEffect(()=>{
-        // ["html", "css"].includes(lang) && setSrcDoc(prev => ({...prev, [lang]: code}))
         setSrcDoc(prev => ({...prev, [lang]: code}))
     },[code])
 
@@ -23,6 +22,7 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
                 <h4 style={{overflow:"hidden", marginRight:"20px"}}>{lang}</h4>
                 <i className="fa-solid fa-down-left-and-up-right-to-center expandIcon"></i>
             </div>
+            
             <div className='editorContainer'>
                 <CodeMirror
                     value={code}
@@ -43,9 +43,6 @@ export default function Editor({ lang, isExpanded, setIsExpanded, srcDoc, setSrc
                     }}
                     theme = {(isDark) ? abcdef : bbedit}
                 />
-                {/* {(lang === "javascript" && isExpanded === lang) && 
-                <button className='consoleBtn' onClick={clickHandler}>RUN</button>
-                } */}
             </div>
 
         </div>

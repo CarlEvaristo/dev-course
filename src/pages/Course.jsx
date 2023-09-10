@@ -72,13 +72,21 @@ export default function Course() {
           {course.challenges.filter(item => item.id === challengeid).map((item) => {
               return <Box className='challenges' style={boxStyle} key={item.id}>
                 <div className="challengeContainer">
-                  <div className="titleBox">
-                    <h2>{`Challenge ${item.id}: ${item.title}`}</h2>
-                    <p>{item.challenge}</p>
+                <div className="challengeHeader">
+                    <div className="titleBox">
+                      <h3>{`Challenge ${item.id}: `}</h3>
+                      <h2>{item.title}</h2>
+                    </div>
+                    <div className="btnBox">
+                      <button className='challengeBtn' onClick={clickHandler}>Check Score</button>
+                    </div>
                   </div>
-                  <div className="btnBox">
-                    <button className='challengeBtn' onClick={clickHandler}>Check Score</button>
-                  </div>
+                  <p className='challengeText'>{item.challenge}</p>
+                  <br/>
+                  <p>{`expected console output: ${item.solution.console}`}</p>
+                  <p>{`expected browser output: ${item.solution.browser}`}</p>
+                  <p>{`your console output: ${output.console}`}</p>
+                  <p>{`your browser output: ${output.browser}`}</p>
                 </div>
 
                 <Ide htmlinput={item.html} css={item.css} javascript={item.javascript} browserTest={item.browserTest} />
