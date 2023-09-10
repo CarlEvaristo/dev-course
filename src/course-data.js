@@ -232,13 +232,40 @@ export const courses = [
 {
     id: "3",
     title: "Hello Universe!",
-    challenge: `The following function doesn't return anything, please tweak the javascript code to make it work. \nThe desired outcome is when the h1 title reads 'Hello world!'`,
+    challenge: `This React code renders an h2 element, an input field and a submit button. The h2 element reads "Hello ", please make it read "Hello universe! The submit button doesn't seem to function properly. Debug the code and fill in the input, and press submit to get the desired brouwer output.`,
     html: "<div id='root'></div>",
     css:"",
-    javascript: `function App () {\n  console.log("test")\n\n  return (\n      <div>Hi!</div>\n    );\n}\n\nReactDOM.render(\n   <React.StrictMode>\n        <App />\n   </React.StrictMode>,\ndocument.getElementById("root")\n);`,
-    browserTest: ``,
+    javascript: `function App () {
+        const [item, setItem] = React.useState("")
+        const [inputText, setInputText] = React.useState("")
+        
+        function clickHandler() {
+          setItem()
+        }
+
+        function changeHandler(e) {
+          setInputText(e.target.value)
+        }
+        
+        return (
+          <div>
+            <h2>Hello {item}</h2>
+            <input id="input" onChange={changeHandler} value={inputText} placeholder="your text here" />
+            <button id="button" onClick={clickHandler} >SUBMIT</button>
+          </div>
+          );
+      }
+      
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      );
+      `,
+    browserTest: `document.getElementsByTagName("h2")[0].textContent`,
     solution: {
-        browser:"",
+        browser:"Hello universe!",
         console: "",
     }
 },

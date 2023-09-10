@@ -56,29 +56,37 @@ export default function generateSourceBrowser(srcDoc) {
           } catch (error) {
             logOutputs.push(error)
           }
-
-          try {
-            const browserOut = ${srcDoc.browserTest}
-            testOutputs.push(browserOut);
-          } catch(error) {
-            testOutputs.push(error);
-          } 
         </script>
 
         <script>
+          const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+              try {
+                const browserOut = ${srcDoc.browserTest}
+                testOutputs = [browserOut];
+              } catch(error) {
+                testOutputs = [error];
+              } 
+              const windowMsg = {
+                id: 'uniqueId1',
+                consolePayload: logOutputs,
+                browserPayload: testOutputs
+              };
+            
+              window.top.postMessage(windowMsg, '*')
+            });
+          });
+          
+          const config = { attributes: true, childList: true, characterData: true, subtree: true };
+
+          observer.observe(document.body, config);
+
           console.log = originalLog
           console.error = originalError 
           console.warn = originalWarning
           console.info = originalInfo
           console.clear = originalClear
 
-          const windowMsg = {
-            id: 'uniqueId1',
-            consolePayload: logOutputs,
-            browserPayload: testOutputs
-          };
-        
-          window.top.postMessage(windowMsg, '*')
         </script>
       </body>
     </html>
